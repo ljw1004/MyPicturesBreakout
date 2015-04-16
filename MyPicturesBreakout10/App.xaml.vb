@@ -18,7 +18,7 @@ NotInheritable Class App
     Dim stockForegroundsTask As Task(Of IReadOnlyList(Of StorageFile))
     Dim PaddleBeep, BrickBeep, GuidedBeep, WinBeep, LoseBeep As StorageFile
     Dim RND As New System.Random
-    Public TelemetryClient As Microsoft.ApplicationInsights.TelemetryClient
+    'Public TelemetryClient As Microsoft.ApplicationInsights.TelemetryClient
     ' Dynamic data for the level currently being played
     Public Dat As GameData
     Public Event DatChanged()
@@ -368,6 +368,7 @@ NotInheritable Class App
     End Sub
 
     Async Sub StartErrorReport(location As String, msg As String)
+        Stop
         Dim md As New Windows.UI.Popups.MessageDialog("Oops. There's been an internal error.", "Bug report")
         Dim r As Boolean? = Nothing
         md.Commands.Add(New Windows.UI.Popups.UICommand("Send bug report", Sub() r = True))
