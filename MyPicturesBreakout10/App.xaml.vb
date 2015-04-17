@@ -18,13 +18,15 @@ NotInheritable Class App
     Dim stockForegroundsTask As Task(Of IReadOnlyList(Of StorageFile))
     Dim PaddleBeep, BrickBeep, GuidedBeep, WinBeep, LoseBeep As StorageFile
     Dim RND As New System.Random
-    'Public TelemetryClient As Microsoft.ApplicationInsights.TelemetryClient
+    Public TelemetryClient As Microsoft.ApplicationInsights.TelemetryClient
     ' Dynamic data for the level currently being played
     Public Dat As GameData
     Public Event DatChanged()
     Public isStartingLevel As Boolean = False
 
     Public Sub New()
+        TelemetryClient = New Microsoft.ApplicationInsights.TelemetryClient()
+
         InitializeComponent()
     End Sub
 
@@ -278,7 +280,11 @@ NotInheritable Class App
                 Await Task.WhenAll(task1, task2, task3, task4).Log("Task.WhenAll", "info/bricks/foreground/background_LoadFunc")
                 Dim info = Await task1, b = Await task2, fg = Await task3, bg = Await task4
                 If info Is Nothing OrElse b Is Nothing OrElse fg Is Nothing OrElse bg Is Nothing Then Return
-                Dat = GameData.Deserialize(info, b, fg, bg)
+                Try
+                    Dat = GameData.Deserialize(info, b, fg, bg)
+                Catch ex As Exception
+                    Return ' BUG in D14Rel 22815: CoreCLR can't deserialize DataContract!
+                End Try
             Finally
                 isStartingLevel = False
                 RaiseEvent DatChanged()
