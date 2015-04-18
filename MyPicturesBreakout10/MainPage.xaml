@@ -30,9 +30,9 @@
             </Border>
             <Grid x:Name="paused2" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <Rectangle Grid.RowSpan="1" Fill="Black" Opacity="0.2"/>
-                <TextBlock x:Name="scoreBricks" HorizontalAlignment="Left" Text="13 279 bricks" FontSize="20"/>
-                <TextBlock x:Name="scoreGames" HorizontalAlignment="Center" Text="100 games" FontSize="20"/>
-                <TextBlock x:Name="scoreTime" HorizontalAlignment="Right" Text="13h28m played" FontSize="20"/>
+                <TextBlock x:Name="scoreBricks" HorizontalAlignment="Left" Text="13 279 bricks" FontSize="20" Foreground="White"/>
+                <TextBlock x:Name="scoreGames" HorizontalAlignment="Center" Text="100 games" FontSize="20" Foreground="White"/>
+                <TextBlock x:Name="scoreTime" HorizontalAlignment="Right" Text="13h28m played" FontSize="20" Foreground="White"/>
             </Grid>
         </Grid>
     </Grid>

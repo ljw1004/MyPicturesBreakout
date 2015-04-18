@@ -18,14 +18,14 @@ NotInheritable Class App
     Dim stockForegroundsTask As Task(Of IReadOnlyList(Of StorageFile))
     Dim PaddleBeep, BrickBeep, GuidedBeep, WinBeep, LoseBeep As StorageFile
     Dim RND As New System.Random
-    Public TelemetryClient As Microsoft.ApplicationInsights.TelemetryClient
+    'Public TelemetryClient As Microsoft.ApplicationInsights.TelemetryClient
     ' Dynamic data for the level currently being played
     Public Dat As GameData
     Public Event DatChanged()
     Public isStartingLevel As Boolean = False
 
     Public Sub New()
-        TelemetryClient = New Microsoft.ApplicationInsights.TelemetryClient()
+        'TelemetryClient = New Microsoft.ApplicationInsights.TelemetryClient()
 
         InitializeComponent()
     End Sub
