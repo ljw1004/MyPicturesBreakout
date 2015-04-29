@@ -7,20 +7,20 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="b0954a1c-13d9-42e9-81ed-21e18c84e1ae"
+    Name="991dc007-3357-44ce-b3e8-b83bc037e867"
     Publisher="CN=lwischik"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="b0954a1c-13d9-42e9-81ed-21e18c84e1ae" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="991dc007-3357-44ce-b3e8-b83bc037e867" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>MyPicturesBreakout10</DisplayName>
+    <DisplayName>DualPictures10</DisplayName>
     <PublisherDisplayName>lwischik</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
   <Dependencies>
-    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10049.0" MaxVersionTested="10.0.10058.0" />
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10069.0" MaxVersionTested="10.0.10069.0" />
   </Dependencies>
 
   <Resources>
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="MyPicturesBreakout10.App">
+      EntryPoint="DualPictures10.App">
       <uap:VisualElements
-        DisplayName="MyPicturesBreakout10"
+        DisplayName="DualPictures10"
         Square150x150Logo="Assets\Logo.png"
         Square44x44Logo="Assets\SmallLogo.png"
-        Description="MyPicturesBreakout10"
+        Description="DualPictures10"
         BackgroundColor="transparent">
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
@@ -43,6 +43,6 @@
   </Applications>
 
   <Capabilities>
-    <uap:Capability Name="picturesLibrary"/>
+    <Capability Name="internetClient" />
   </Capabilities>
 </Package>
