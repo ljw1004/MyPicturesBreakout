@@ -2,6 +2,8 @@
 
 This is a Breakout clone that uses your own pictures. You can control your brick with touch (and multi-touch!)
 
+![screenshot](MyPicturesBreakout.png)
+
 As an experiment, I made two versions of the codebase to see how they compared:
 
 * **Win10-only**. If I think that Win10 is the future, and everyone will upgrade to it soon, then there's no point supporting older platforms. So this version is a pure Win10 "Universal Windows App" that can run on any Win10 device.
