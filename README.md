@@ -10,4 +10,9 @@ As an experiment, I made two versions of the codebase to see how they compared:
 * **Win10 and WP8.1**. If I think that Windows Phone 8.1 will still be around for a while (because folks can't upgrade their phones easily) then I'll want to support it as well as Win10. So this version supports both.
    * `DualPictures10` - this project is a Win10 universal windows app.
    * `DualPictures81` - this project is specifically for Windows Phone 8.1
-   * `DualPicturesShared` - this is a shared PCL that can be used by both. To make a PCL that can be used by both UAP and 8.1, you set its PCL targets to be *both* Win8.1 and WP8.1. With these two targets, it will implicitly work on UAP as well.
+   * `DualPicturesShared` - this is a shared PCL that can be used by both. To make a PCL that can be used by both UAP and 8.1, you set its PCL targets to be *both* Win8.1 and WP8.1. With these two targets, it will implicitly work on all UAP platforms as well.
+
+* **Win10 and Win8.1 and WP8.1**. I didn't bother with this option, but would have done it the same as above.
+
+
+

@@ -52,8 +52,7 @@ Public Class SharedApp
                 StartLoadLocalGameState()
                 Window.Current.Content = rootFrame
             End If
-            'TODO!!!
-            'If rootFrame.Content Is Nothing Then rootFrame.Navigate(GetType(MainPage), e.Arguments)
+            If rootFrame.Content Is Nothing Then rootFrame.Navigate(GetType(MainPage))
             Window.Current.Activate()
         Catch ex As Exception
             StartErrorReport("OnLaunched", ex)
@@ -80,15 +79,15 @@ Public Class SharedApp
         Try
             Dim filesTask = Task.Run(AddressOf FileScannerAsync)
             stockBackgroundsTask = Task.Run(Async Function()
-                                                Dim folder = Await Package.Current.InstalledLocation.GetFolderAsync("Assets\StockBackgrounds").Log("GetFolderAsync", "StockBackgrounds")
+                                                Dim folder = Await Package.Current.InstalledLocation.GetFolderAsync("DualPicturesShared\Assets\StockBackgrounds").Log("GetFolderAsync", "StockBackgrounds")
                                                 Return Await folder.GetFilesAsync().Log("GetFilesAsync", "StockBackgrounds")
                                             End Function)
             stockForegroundsTask = Task.Run(Async Function()
-                                                Dim folder = Await Package.Current.InstalledLocation.GetFolderAsync("Assets\StockForegrounds").Log("GetFolderAsync", "StockForegrounds")
+                                                Dim folder = Await Package.Current.InstalledLocation.GetFolderAsync("DualPicturesShared\Assets\StockForegrounds").Log("GetFolderAsync", "StockForegrounds")
                                                 Return Await folder.GetFilesAsync().Log("GetFilesAsync", "StockForegrounds")
                                             End Function)
             Dim beepTask = Task.Run(Async Function()
-                                        Dim folder = Await Package.Current.InstalledLocation.GetFolderAsync("Assets").Log("GetFolderAsync", "Assets")
+                                        Dim folder = Await Package.Current.InstalledLocation.GetFolderAsync("DualPicturesShared\Assets").Log("GetFolderAsync", "Assets")
                                         Dim paddleBeepTask = folder.GetFileAsync("beep-paddle.wav")
                                         Dim brickBeepTask = folder.GetFileAsync("beep-brick.wav")
                                         Dim guidedBeepTask = folder.GetFileAsync("beep-guided.wav")
@@ -271,11 +270,7 @@ Public Class SharedApp
                 Await Task.WhenAll(task1, task2, task3, task4).Log("Task.WhenAll", "info/bricks/foreground/background_LoadFunc")
                 Dim info = Await task1, b = Await task2, fg = Await task3, bg = Await task4
                 If info Is Nothing OrElse b Is Nothing OrElse fg Is Nothing OrElse bg Is Nothing Then Return
-                Try
-                    Dat = GameData.Deserialize(info, b, fg, bg)
-                Catch ex As Exception
-                    Return ' BUG in D14Rel 22815: CoreCLR can't deserialize DataContract!
-                End Try
+                Dat = GameData.Deserialize(info, b, fg, bg)
             Finally
                 isStartingLevel = False
                 RaiseEvent DatChanged()

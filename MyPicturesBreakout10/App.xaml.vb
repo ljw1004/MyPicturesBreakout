@@ -280,11 +280,7 @@ NotInheritable Class App
                 Await Task.WhenAll(task1, task2, task3, task4).Log("Task.WhenAll", "info/bricks/foreground/background_LoadFunc")
                 Dim info = Await task1, b = Await task2, fg = Await task3, bg = Await task4
                 If info Is Nothing OrElse b Is Nothing OrElse fg Is Nothing OrElse bg Is Nothing Then Return
-                Try
-                    Dat = GameData.Deserialize(info, b, fg, bg)
-                Catch ex As Exception
-                    Return ' BUG in D14Rel 22815: CoreCLR can't deserialize DataContract!
-                End Try
+                Dat = GameData.Deserialize(info, b, fg, bg)
             Finally
                 isStartingLevel = False
                 RaiseEvent DatChanged()
