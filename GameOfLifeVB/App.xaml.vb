@@ -9,6 +9,9 @@
             Window.Current.Content = rootFrame
         End If
         If rootFrame.Content Is Nothing Then rootFrame.Navigate(GetType(MainPage), e.Arguments)
+        ApplicationView.PreferredLaunchViewSize = New Size With {.Width = 200, .Height = 200}
+        ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.Auto
+        ApplicationView.GetForCurrentView().SetPreferredMinSize(New Size With {.Width = 200, .Height = 100})
         Window.Current.Activate()
     End Sub
 
