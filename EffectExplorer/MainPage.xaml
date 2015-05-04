@@ -87,17 +87,21 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" FontSize="30" FontWeight="Bold">Pointer</TextBlock>
                 <TextBox x:Name="ptr1" Grid.Row="1" Grid.Column="0" />
+                <TextBox x:Name="ptr2" Grid.Row="2" Grid.Column="0" />
+                <TextBox x:Name="ptr3" Grid.Row="3" Grid.Column="0" />
             </Grid>
             <TextBlock x:Name="status1" FontSize="12" Foreground="Red"/>
         </StackPanel>
 
-        <Border x:Name="content1" Grid.Row="0" Grid.Column="1" Width="200" Height="500" BorderBrush="Blue" BorderThickness="1">
+        <Border x:Name="content1" Grid.Row="0" Grid.Column="1" Width="200" Height="425" BorderBrush="Blue" BorderThickness="1" VerticalAlignment="Top" Margin="0,10,0,0">
             <TextBlock Text="before and after"/>
         </Border>
 

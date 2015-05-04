@@ -152,7 +152,10 @@ Public NotInheritable Class MainPage
         ElseIf x >= 0 AndAlso y >= App.CHEIGHT + 1 AndAlso x < App.CWIDTH AndAlso y < App.CHEIGHT + 1 + App.CHEIGHT Then
             c = surface2.GetPixelColors(x, y - App.CHEIGHT - 1, 1, 1).First
         End If
-        If c.HasValue Then ptr1.Text = $"#{c?.R:X2}{c?.G:X2}{c?.B:X2}" Else ptr1.Text = ""
+        ptr1.Text = If(c.HasValue, $"#{c?.R:X2}{c?.G:X2}{c?.B:X2}", "")
+        ptr2.Text = If(c.HasValue, $"rgb({c?.R}, {c?.G}, {c?.B})", "")
+        ptr3.Text = If(c.HasValue, $"rgb({c?.R / 255:0.00}, {c?.G / 255:0.00}, {c?.B / 255:0.00})", "")
+
     End Sub
 
     Private Sub Rectangle_PointerPressed(sender As Object, e As PointerRoutedEventArgs)
