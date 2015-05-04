@@ -84,7 +84,7 @@ Public NotInheritable Class MainPage
             ' but the manual update-logic one can only manage 15fps (70ms)
             ' Regardless, once it's been updated, it needs to be redrawn on the Win2D XAML canas.
             ' Redrawing is capped at 60fps, so I'll the update-loop to do no more than that
-            If count > 20 Then count = 0 : Await DontUpdateUntilFrameIsDrawn.WaitAsync()
+            If count > 0 Then count = 0 : Await DontUpdateUntilFrameIsDrawn.WaitAsync()
         End While
     End Sub
 
@@ -313,10 +313,8 @@ Public NotInheritable Class MainPage
 
     Public Function GetDisplayTransform(controlSize As Size, canvas As ICanvasResourceCreatorWithDpi, designWidth As Integer, designHeight As Integer) As Matrix3x2
         Dim sourceSize As New Vector2(canvas1.ConvertPixelsToDips(designWidth), canvas1.ConvertPixelsToDips(designHeight))
-        Return GetDisplayTransform(controlSize.ToVector2(), sourceSize)
-    End Function
+        Dim outputSize = controlSize.ToVector2
 
-    Public Function GetDisplayTransform(outputSize As Vector2, sourceSize As Vector2) As Matrix3x2
         ' Scale the display to fill the control.
         Dim scale = outputSize / sourceSize
         Dim offset = Vector2.Zero
@@ -331,11 +329,8 @@ Public NotInheritable Class MainPage
         End If
 
         ' TODO #4479 once .NET Native x64 codegen bug is fixed, change this back to:
-        'Return Matrix3x2.CreateScale(scale) *
-        '       Matrix3x2.CreateTranslation(offset)
-        Return New Matrix3x2(scale.X, 0,
-                             0, scale.Y,
-                             offset.X, offset.Y)
+        'Return Matrix3x2.CreateScale(scale) * Matrix3x2.CreateTranslation(offset)
+        Return New Matrix3x2(scale.X, 0, 0, scale.Y, offset.X, offset.Y)
     End Function
 
 
