@@ -46,7 +46,7 @@ Public NotInheritable Class MainPage
 
     Sub ReadModelFromUI()
         App.model.ConvolveMatrixEnabled = cmx.IsChecked.GetValueOrDefault
-        App.model.ConvolveMatrixKernel = {cmk0.Sng, cmk1.Sng, cmk2.Sng, cmk3.Sng, cmk4.Sng, cmk5.Sng, cmk6.Sng, cmk7.Sng, cmk8.Sng}
+        App.model.ConvolveMatrixKernel = {cmk8.Sng, cmk7.Sng, cmk6.Sng, cmk5.Sng, cmk4.Sng, cmk3.Sng, cmk2.Sng, cmk1.Sng, cmk0.Sng}
         App.model.ConvolveMatrixDivisor = cmd.Int
         App.model.DiscreteTransferEnabled = dtx.IsChecked.GetValueOrDefault
         Dim t2ss = Function(tt As String)
@@ -66,15 +66,15 @@ Public NotInheritable Class MainPage
 
     Sub WriteModelToUI()
         cmx.IsChecked = App.model.ConvolveMatrixEnabled
-        cmk0.Text = App.model.ConvolveMatrixKernel(0).ToString()
-        cmk1.Text = App.model.ConvolveMatrixKernel(1).ToString()
-        cmk2.Text = App.model.ConvolveMatrixKernel(2).ToString()
-        cmk3.Text = App.model.ConvolveMatrixKernel(3).ToString()
+        cmk0.Text = App.model.ConvolveMatrixKernel(8).ToString()
+        cmk1.Text = App.model.ConvolveMatrixKernel(7).ToString()
+        cmk2.Text = App.model.ConvolveMatrixKernel(6).ToString()
+        cmk3.Text = App.model.ConvolveMatrixKernel(5).ToString()
         cmk4.Text = App.model.ConvolveMatrixKernel(4).ToString()
-        cmk5.Text = App.model.ConvolveMatrixKernel(5).ToString()
-        cmk6.Text = App.model.ConvolveMatrixKernel(6).ToString()
-        cmk7.Text = App.model.ConvolveMatrixKernel(7).ToString()
-        cmk8.Text = App.model.ConvolveMatrixKernel(8).ToString()
+        cmk5.Text = App.model.ConvolveMatrixKernel(3).ToString()
+        cmk6.Text = App.model.ConvolveMatrixKernel(2).ToString()
+        cmk7.Text = App.model.ConvolveMatrixKernel(1).ToString()
+        cmk8.Text = App.model.ConvolveMatrixKernel(0).ToString()
         cmd.Text = App.model.ConvolveMatrixDivisor.ToString()
         dtx.IsChecked = App.model.DiscreteTransferEnabled
         dtr.Text = String.Join(" ", App.model.DiscreteTransferTableRed.Select(Function(s) s.ToString()))
